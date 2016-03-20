@@ -4,7 +4,7 @@ describe('app', function () {
     var app = window.app;
 
     var car;
-    xdescribe('Car', function () {
+    describe('Car', function () {
         beforeEach(function () {
             car = new app.Car('Audi', 1998);
         });
@@ -32,9 +32,11 @@ describe('app', function () {
     var carPortal;
     describe('CarPortal', function () {
         carPortal = new app.CarPortal();
-
+        afterEach(function () {
+            carPortal.logout();
+        });
         it('should set username to john and password to 12345 when login is call', function () {
-            carPortal.login('john', '12345');
+            carPortal.login('Rafał Miękina', '12345');
             expect(carPortal.credentials).toEqual({username: 'john', password: '12345'});
         });
         it('should set username to maria and password to qwerty when login is call', function () {
